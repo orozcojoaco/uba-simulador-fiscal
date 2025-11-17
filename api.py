@@ -57,6 +57,14 @@ def simular_ajuste(estado, cambio_gasto, cambio_impuesto):
 def home():
     return send_from_directory('.', 'index.html')
 
+@app.route('/style.css')
+def serve_css():
+    return send_from_directory('.', 'style.css')
+
+@app.route('/app.js')
+def serve_js():
+    return send_from_directory('.', 'app.js')
+
 # --- ENDPOINT WEB (La URL que llama el navegador) ---
 @app.route('/simular', methods=['POST'])
 def simular_anho():
