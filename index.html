@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UBA-Fiscal: Simulador de Ajuste</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4 text-primary">🏛️ UBA-Fiscal: Simulador de Política Económica</h1>
+        <p class="text-center lead">Ajuste las palancas fiscales y observe el impacto en la economía nacional (Crecimiento, Inflación y Gini).</p>
+        
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card shadow-sm p-3 mb-4 bg-light">
+                    <h5 class="card-title text-primary">Decisiones de Política</h5>
+                    <hr>
+                    
+                    <label class="form-label mt-3">**Gasto Público (G)**</label>
+                    <div class="btn-group" role="group" id="gasto-buttons">
+                        <button type="button" class="btn btn-sm btn-outline-danger" data-value="-1">Reducir</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary active" data-value="0">Mantener</button>
+                        <button type="button" class="btn btn-sm btn-outline-success" data-value="1">Aumentar</button>
+                    </div>
+
+                    <label class="form-label mt-4">**Impuesto a la Riqueza (T)**</label>
+                    <div class="btn-group" role="group" id="impuesto-buttons">
+                        <button type="button" class="btn btn-sm btn-outline-danger" data-value="-1">Reducir</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary active" data-value="0">Mantener</button>
+                        <button type="button" class="btn btn-sm btn-outline-success" data-value="1">Aumentar</button>
+                    </div>
+
+                    <button class="btn btn-primary mt-4" id="simular-btn">Simular Año</button>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="card text-center shadow-sm p-2 indicator-card" id="pbi-card">
+                            <div class="card-header bg-success text-white">PBI Crecimiento</div>
+                            <div class="card-body">
+                                <h3 id="pbi-value">2.00%</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center shadow-sm p-2 indicator-card" id="inflacion-card">
+                            <div class="card-header bg-danger text-white">Tasa de Inflación</div>
+                            <div class="card-body">
+                                <h3 id="inflacion-value">30.00%</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center shadow-sm p-2 indicator-card" id="gini-card">
+                            <div class="card-header bg-primary text-white">Coeficiente Gini</div>
+                            <div class="card-body">
+                                <h3 id="gini-value">0.45</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm p-4">
+                    <h5 class="text-primary">Evolución Macroeconómica</h5>
+                    <canvas id="macroChart"></canvas>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="card shadow-sm p-3 bg-light">
+                    <h5 class="card-title text-primary">Historial (Datos Brutos)</h5>
+                    <table class="table table-sm mt-3">
+                        <thead>
+                            <tr><th>Año</th><th>PBI</th><th>Gini</th></tr>
+                        </thead>
+                        <tbody id="historial-body">
+                            <tr><td>Inicial</td><td>2.00</td><td>0.45</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="app.js"></script> </body>
+</html>
