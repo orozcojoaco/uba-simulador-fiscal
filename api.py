@@ -1,5 +1,5 @@
 # api.py - Backend en Python
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS # Necesario para la comunicación entre el HTML y Python
 
 # 1. Configuración de la App Flask
@@ -51,6 +51,11 @@ def simular_ajuste(estado, cambio_gasto, cambio_impuesto):
     estado.Tasa_Inflacion = max(0.5, estado.Tasa_Inflacion)
     estado.Coeficiente_Gini = min(max(0.3, estado.Coeficiente_Gini), 0.6)
     estado.PBI_Crecimiento_Anual = min(6.0, estado.PBI_Crecimiento_Anual)
+
+
+@app.route('/')
+def home():
+    return send_from_directory('.', 'index.html')
 
 # --- ENDPOINT WEB (La URL que llama el navegador) ---
 @app.route('/simular', methods=['POST'])
