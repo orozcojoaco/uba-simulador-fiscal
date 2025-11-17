@@ -1,8 +1,10 @@
 // app.js - Script de conexión y manejo de gráficos
 
 // URL del backend de Python
-const API_URL = 'http://127.0.0.1:5000/simular'; 
-const RESET_URL = 'http://127.0.0.1:5000/reset';
+const BASE_URL = 'https://uba-fiscal-app.onrender.com';
+
+const API_URL = `${BASE_URL}/simular`; 
+const RESET_URL = `${BASE_URL}/reset`;
 
 let anho = 1;
 let chart;
